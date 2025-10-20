@@ -1,4 +1,4 @@
-# Python Project: WH Assessment
+# RETENTION_RATE_AGGREGATOR: WH Assessment
 
 This project processes and analyzes student data from a public API, saving results in CSV and Parquet formats.  
 It includes a data pipeline, tests, and is fully containerized for development and testing.
@@ -16,11 +16,32 @@ or
 1. **Clone the repository:**
    ```bash
    git clone <your-repo-url>
-   cd Python_Project
    ```
 
 2. **(Optional) Review and edit `requirements.txt`**  
    Ensure all required Python packages are listed.
+
+
+
+### Local Development (using .venv)
+
+If you prefer to run the project locally without Docker:
+
+Create and activate a virtual environment:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate  # On Linux/macOS
+# .venv\Scripts\activate   # On Windows
+```
+
+Install dependencies:
+This command installs all required libraries mentioned in the requirements.txt
+
+```
+(.venv) pip install -r requirements.txt
+```
+
 
 ### Build and Start a Development Container
 
@@ -54,19 +75,20 @@ pytest --cov=. --cov-report=term-missing tests
 ### Project Structure
 
 ```
-Python_Project/
+RETENTION_RATE_AGGREGATOR/
 ├── retention_rate_second_level_school.py
 ├── utils.py
 ├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
-├── transformed/           # Output files (created automatically)
+├── transformed/           # Transformed Output files
 └── tests/
     └── test_retention_rate_second_level_school.py
+    └── test_utils.py
 ```
 
 ### Notes
 
 - All output files are saved in the `transformed` directory.
-- Code changes on your host are reflected in the container (thanks to the volume mount).
+- Code changes on your host are reflected in the container.
 - You can install additional packages by adding them to `requirements.txt` and rebuilding the container.
